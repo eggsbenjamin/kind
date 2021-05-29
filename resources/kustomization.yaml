@@ -1,0 +1,5 @@
+resources:
+  - nginx
+  - prometheus
+  - kube_state_metrics
+  - grafana

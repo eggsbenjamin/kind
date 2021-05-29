@@ -1,0 +1,8 @@
+resources:
+  - namespace.yaml
+  - clusterRole.yaml
+  - config-map.yaml
+  - prometheus-deployment.yaml
+  - prometheus-ingress.yaml
+  - prometheus-service.yaml
+

@@ -1,0 +1,6 @@
+resources:
+  - deployment.yaml
+  - grafana-datasource-config.yaml
+  - grafana-dashboard-config.yaml
+  - service.yaml
+  - grafana-ingress.yaml
