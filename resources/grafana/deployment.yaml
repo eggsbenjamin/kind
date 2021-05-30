@@ -44,6 +44,6 @@ spec:
               defaultMode: 420
               name: grafana-datasources
         - name: grafana-dashboard-config
-          configMap:
-              defaultMode: 420
-              name: grafana-dashboard-config
+          hostPath:
+            path: /resources/grafana/dashboards # see kind config for mount config
+            type: Directory

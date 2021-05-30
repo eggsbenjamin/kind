@@ -26,7 +26,7 @@ $(kind_kubeconfig): $(BIN_PATH)/kind
 	echo $(kind_kubeconfig)
 	kind create cluster --config=$(kind_config) --name=$(kind_cluster_name)
 	kind export kubeconfig --name $(kind_cluster_name) --kubeconfig $(kind_kubeconfig)
-	echo "Waiting for nodes to become ready..."
+	@echo "Waiting for nodes to become ready..."
 	kubectl wait --for=condition=Ready nodes --timeout=60s --all
 
 kind-teardown: $(BIN_PATH)/kind ## Remove local kind cluster
@@ -43,6 +43,9 @@ endif
 .PHONY: resources
 resources: $(BIN_PATH)/kubectl
 	kubectl apply -k resources
+
+admin_token:
+	kubectl get secret -n kube-system cluster-admin-token -o jsonpath='{.data.token}' | base64 -d 
 
 cilium: $(BIN_PATH)/cilium
 	cilium install 

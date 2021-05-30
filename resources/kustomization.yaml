@@ -1,5 +1,7 @@
 resources:
-  - nginx
-  - prometheus
-  - kube_state_metrics
-  - grafana
+  - ./rbac
+  - ./nginx
+  - ./prometheus
+  - ./kube_state_metrics
+  - ./grafana
+  - ./kubernetes-dashboard

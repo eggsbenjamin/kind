@@ -64,6 +64,15 @@ data:
         - action: labelmap
           regex: __meta_kubernetes_pod_label_(.+)
           
+      - job_name: 'kube-proxy'
+        scheme: http
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        static_configs:
+          - targets: ['172.18.0.2:10249']
+        relabel_configs:
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+
       - job_name: 'kubernetes-nodes'
         scheme: https
         tls_config:

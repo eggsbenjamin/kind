@@ -14,9 +14,19 @@ nodes:
     controllerManager:
       extraArgs:
         bind-address: "0.0.0.0"
+        show-hidden-metrics-for-version: "1.13"
     scheduler:
       extraArgs:
         bind-address: "0.0.0.0"
+        show-hidden-metrics-for-version: "1.13"
+  - |
+    kind: KubeProxyConfiguration
+    metricsBindAddress: "0.0.0.0"
+    #showHiddenMetricsForVersion: "1.14"
+
+  extraMounts:
+  - hostPath: ./resources/grafana/dashboards
+    containerPath: /resources/grafana/dashboards
 
   extraPortMappings:
   - containerPort: 80
